@@ -1,11 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
 
-
 url = "https://www.gov.br/ans/pt-br/acesso-a-informacao/participacao-da-sociedade/atualizacao-do-rol-de-procedimentos"
 
-
 def extract_links(url):
+    """Access the page and return the links that contain the keywords."""
 
     response = requests.get(url)
 
