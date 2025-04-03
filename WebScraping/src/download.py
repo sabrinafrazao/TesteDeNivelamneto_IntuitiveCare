@@ -1,9 +1,11 @@
 import os
 import requests
 
-folder = r"WebScraping\resources\anexos"
+folder = r"WebScraping\resources\attachment"
 
 def download_files(links,folder, base_url):
+    """Downloads PDF files from the provided links and saves them in the specified folder."""
+
     os.makedirs(folder, exist_ok=True)
 
     for idx, link in enumerate(links, start=1):
@@ -15,6 +17,6 @@ def download_files(links,folder, base_url):
         if response.status_code == 200 and response.headers.get("Content-Type") == "application/pdf":
             with open(path_files, "wb") as f:
                 f.write(response.content)
-            print(f"Baixado: {path_files}")
+            print(f"Downloaded: {path_files}")
         else:
-            print(f"Erro ao baixar {full_url} ou arquivo não é um PDF válido.")
+            print(f"Error downloading {full_url} or file is not a valid PDF.")
